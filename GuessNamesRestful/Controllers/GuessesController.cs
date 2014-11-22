@@ -28,10 +28,26 @@ namespace GuessNamesRestful.Controllers
             return guess.Score;
         }
 
-        public IEnumerable<Guess> Get(int nameId, string userName)
+        public IEnumerable<GuessResult> Get(int nameId, string userName)
         {
             var name = guessNamesContext.Names.Single(x => x.Id == nameId);
-            return name.Guesses.Where(x => x.UserName == userName).ToList();
+            return ToResult(name.Guesses.Where(x => x.UserName == userName));
+        }
+
+        public IEnumerable<GuessResult> Get(int nameId)
+        {
+            var name = guessNamesContext.Names.Single(x => x.Id == nameId);
+            return ToResult(name.Guesses);
+        }
+
+        private IEnumerable<GuessResult> ToResult(IEnumerable<Guess> guesses)
+        {
+            return guesses.Select(x => new GuessResult()
+            {
+                Date = x.Date,
+                GuessedName = x.GuessedName,
+                UserName = x.UserName
+            }).ToList();
         }
     }
 }

@@ -172,6 +172,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Guess.cs" />
     <Compile Include="Models\GuessNamesContext.cs" />
+    <Compile Include="Models\GuessResult.cs" />
     <Compile Include="Models\Name.cs" />
     <Compile Include="Models\Statistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
