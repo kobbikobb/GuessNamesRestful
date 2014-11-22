@@ -31,7 +31,7 @@ namespace GuessNamesRestful.Controllers
         public IEnumerable<Guess> Get(int nameId)
         {
             var name = guessNamesContext.Names.Single(x => x.Id == nameId);
-            return name.Guesses;
+            return name.Guesses.ToList();
         }
 
         public IEnumerable<Guess> Get(int nameId, string userName)

@@ -29,7 +29,7 @@ namespace GuessNamesRestful.Controllers
 
         public IEnumerable<Name> Get()
         {
-            return guessNamesContext.Names;
+            return guessNamesContext.Names.ToList();
         }
     }
 }
