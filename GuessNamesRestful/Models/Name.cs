@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Helpers;
@@ -33,6 +34,9 @@ namespace GuessNamesRestful.Models
 
         public Guess MakeGuess(string userName, string guessedName)
         {
+            if(userName == null)
+                throw new NullReferenceException("Username can not be null.");
+
             return new Guess()
             {
                 Date = DateTime.Now,
