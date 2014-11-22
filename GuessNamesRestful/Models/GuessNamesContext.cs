@@ -8,7 +8,7 @@ namespace GuessNamesRestful.Models
 {
     public class GuessNamesContext : DbContext
     {
-        public GuessNamesContext() : base("GuessNamesContext")
+        public GuessNamesContext() : base("DefaultConnection")
         {
             
         }

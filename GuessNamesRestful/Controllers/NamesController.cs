@@ -27,7 +27,7 @@ namespace GuessNamesRestful.Controllers
             return name.Id;
         }
 
-        public IEnumerable<Name> Get(int nameId)
+        public IEnumerable<Name> Get()
         {
             return guessNamesContext.Names;
         }
