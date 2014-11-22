@@ -160,6 +160,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411221245193_InitialCreate.cs" />
+    <Compile Include="Migrations\201411221245193_InitialCreate.Designer.cs">
+      <DependentUpon>201411221245193_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Guess.cs" />
     <Compile Include="Models\GuessNamesContext.cs" />
     <Compile Include="Models\Name.cs" />
@@ -215,7 +220,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201411221245193_InitialCreate.resx">
+      <DependentUpon>201411221245193_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
