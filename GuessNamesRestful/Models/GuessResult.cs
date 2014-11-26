@@ -9,6 +9,7 @@ namespace GuessNamesRestful.Models
     {
         public DateTime Date { get; set; }
         public string UserName { get; set; }
+        public string ClientIp { get; set; }
         public string GuessedName { get; set; }
     }
 }

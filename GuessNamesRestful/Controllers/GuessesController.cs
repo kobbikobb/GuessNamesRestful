@@ -51,6 +51,7 @@ namespace GuessNamesRestful.Controllers
             {
                 Date = x.Date,
                 GuessedName = x.GuessedName,
+                ClientIp = x.ClientIp,
                 UserName = x.UserName
             }).ToList();
         }
