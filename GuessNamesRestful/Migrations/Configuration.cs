@@ -9,7 +9,7 @@ namespace GuessNamesRestful.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "GuessNamesRestful.Models.GuessNamesContext";
         }
 
