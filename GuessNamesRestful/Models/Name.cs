@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Web;
 using System.Web.Helpers;
@@ -42,7 +42,8 @@ namespace GuessNamesRestful.Models
                 Date = DateTime.Now,
                 GuessedName = guessedName,
                 Score = GetScore(guessedName),
-                UserName = userName
+                UserName = userName,
+                ClientIp = HttpContext.Current.Request.UserHostAddress
             };
         }
 
@@ -63,6 +64,18 @@ namespace GuessNamesRestful.Models
         public void AddGuess(Guess guess)
         {
             Guesses.Add(guess);
+        }
+
+        public bool CanClientGuess()
+        {
+            var clientIp = HttpContext.Current.Request.UserHostAddress;
+
+            var guessesToday = Guesses
+                .Where(x => 
+                    x.ClientIp == clientIp && 
+                    SqlFunctions.DateDiff("day", x.Date, DateTime.Today) == 0);
+
+            return guessesToday.Count() < 10;
         }
     }
 }

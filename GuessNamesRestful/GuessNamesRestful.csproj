@@ -169,6 +169,10 @@
     <Compile Include="Migrations\201411221245193_InitialCreate.Designer.cs">
       <DependentUpon>201411221245193_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411260726566_ClientIp.cs" />
+    <Compile Include="Migrations\201411260726566_ClientIp.Designer.cs">
+      <DependentUpon>201411260726566_ClientIp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Guess.cs" />
     <Compile Include="Models\GuessNamesContext.cs" />
@@ -230,6 +234,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201411221245193_InitialCreate.resx">
       <DependentUpon>201411221245193_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411260726566_ClientIp.resx">
+      <DependentUpon>201411260726566_ClientIp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

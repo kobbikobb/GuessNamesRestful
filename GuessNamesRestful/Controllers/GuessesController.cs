@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using GuessNamesRestful.Models;
 
@@ -20,6 +21,10 @@ namespace GuessNamesRestful.Controllers
         public Score Post(int nameId, string userName, string guessedName)
         {
             var name = guessNamesContext.Names.Single(x => x.Id == nameId);
+            if (!name.CanClientGuess())
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
             var guess = name.MakeGuess(userName, guessedName);
             
             name.AddGuess(guess);
