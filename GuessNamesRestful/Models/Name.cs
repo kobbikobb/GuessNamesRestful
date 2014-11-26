@@ -72,8 +72,7 @@ namespace GuessNamesRestful.Models
 
             var guessesToday = Guesses
                 .Where(x => 
-                    x.ClientIp == clientIp && 
-                    SqlFunctions.DateDiff("day", x.Date, DateTime.Today) == 0);
+                    x.ClientIp == clientIp && x.Date.Date == DateTime.Today);
 
             return guessesToday.Count() < 10;
         }
