@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using GuessNamesRestful.Migrations;
 
 namespace GuessNamesRestful.Models
 {
@@ -14,6 +15,11 @@ namespace GuessNamesRestful.Models
         }
 
         public DbSet<Guess> Guesses { get; set; }
-        public DbSet<Name> Names { get; set; } 
+        public DbSet<Name> Names { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<GuessNamesContext, Configuration>());
+        }
     }
 }
