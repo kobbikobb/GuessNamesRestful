@@ -165,6 +165,7 @@ DocProject/Help/html
 *.pubxml
 
 # NuGet Packages Directory
+/packages/
 /*/packages/
 /*/*/packages/
 /*/*/*/packages/
