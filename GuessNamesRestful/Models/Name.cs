@@ -43,7 +43,7 @@ namespace GuessNamesRestful.Models
                 GuessedName = guessedName,
                 Score = GetScore(guessedName),
                 UserName = userName,
-                ClientIp = HttpContext.Current.Request.UserHostAddress
+                ClientIp = GetClientIpAddress()
             };
         }
 
@@ -68,13 +68,22 @@ namespace GuessNamesRestful.Models
 
         public bool CanClientGuess()
         {
-            var clientIp = HttpContext.Current.Request.UserHostAddress;
+            var clientIp = GetClientIpAddress();
 
             var guessesToday = Guesses
                 .Where(x => 
                     x.ClientIp == clientIp && x.Date.Date == DateTime.Today);
 
             return guessesToday.Count() < 10;
+        }
+
+        private string GetClientIpAddress()
+        {
+            var clinetForwardedIp = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            if (!string.IsNullOrEmpty(clinetForwardedIp))
+                return clinetForwardedIp;
+
+            return HttpContext.Current.Request.UserHostAddress;
         }
     }
 }
